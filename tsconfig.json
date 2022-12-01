@@ -18,13 +18,12 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
-      "components/*": ["components/*"],
-      "stitches/*": ["stitches/*"],
-      "store/*": ["store/*"],
-      "pages/*": ["pages/*"],
-      "layouts/*": ["layouts/*"],
-      "hooks/*": ["hooks/*"],
-      "assets/*": ["assets/*"]
+      "components/*": [
+        "components/*"
+      ],
+      "pages/*": [
+        "pages/*"
+      ]
     }
   },
   "include": ["src", "src/custom.d.ts"]

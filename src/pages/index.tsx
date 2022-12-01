@@ -1,15 +1,21 @@
-import ComponentDemoLayout from 'layouts/ComponentDemo';
-import MainLayout from 'layouts/Main';
 import { FC, lazy, ReactElement, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('./Home'));
-const FeatureCard = lazy(() => import('./FeatureCard'));
+const Detail = lazy(() => import('./Detail'));
+
+const AppShell: FC = (): ReactElement => {
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+};
 
 const Pages: FC = (): ReactElement => {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<AppShell />}>
         <Route
           index
           element={
@@ -18,25 +24,15 @@ const Pages: FC = (): ReactElement => {
             </Suspense>
           }
         />
-      </Route>
-      <Route path="/components" element={<ComponentDemoLayout />}>
         <Route
-          path="feature-card"
+          path="create"
           element={
             <Suspense fallback={<div />}>
-              <FeatureCard />
+              <Detail type="create" />
             </Suspense>
           }
         />
       </Route>
-      <Route
-        path="*"
-        element={
-          <main style={{ padding: '1rem' }}>
-            <p>404! There's nothing here!</p>
-          </main>
-        }
-      />
     </Routes>
   );
 };
